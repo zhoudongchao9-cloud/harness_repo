@@ -34,6 +34,12 @@ const NUMBER_WORDS = [
 ];
 const WORD_TO_NUMBER = Object.fromEntries(NUMBER_WORDS.map((word, index) => [word, index]));
 
+/**
+ * Parse and execute a small English-like DSL program and collect its report outputs.
+ * @param {string} story - The program text written in the English-like DSL.
+ * @param {Object} varMap - Mapping from internal JS variable names to their English identifiers used in `story`.
+ * @returns {{output: any[]}} An object with an `output` array containing values produced by `The herald ...` report statements. 
+ */
 function runEnglish(story, varMap) {
   const reverseVars = Object.fromEntries(Object.entries(varMap).map(([jsName, englishName]) => [englishName, jsName]));
   const lines = story.split(/\r?\n/)
